@@ -24,9 +24,6 @@ function getMessageEncoding(message) {
 async function encryptMessage(message) {
   // The iv must never be reused with a given key.
   const encoded = getMessageEncoding(message);
-  console.log("encryptMessage.ciphertext", ciphertext);
-  console.log("encryptMessage.iv", iv);
-  console.log("encryptMessage.key", aesKey);
 
   ciphertext = await window.crypto.subtle.encrypt(
     {
@@ -49,13 +46,6 @@ const decryptFunc = async () => {
   let dec = new TextDecoder();
   const reveresed = dec.decode(decrypted);
   console.log({ reveresed });
-
-  const decrypted1 = await getDecrypted();
-
-  let dec1 = new TextDecoder();
-  const reveresed1 = dec1.decode(decrypted1);
-
-  console.log({ reveresed1 });
 };
 
 const getDecrypted = async () => {
